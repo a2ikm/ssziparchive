@@ -141,6 +141,9 @@
 	        
 			// Check if it contains directory
 			NSString *strPath = [NSString stringWithCString:filename encoding:NSUTF8StringEncoding];
+			if (!strPath) {
+				strPath = [NSString stringWithCString:filename encoding:NSShiftJISStringEncoding];
+			}
 			BOOL isDirectory = NO;
 			if (filename[fileInfo.size_filename-1] == '/' || filename[fileInfo.size_filename-1] == '\\') {
 				isDirectory = YES;
